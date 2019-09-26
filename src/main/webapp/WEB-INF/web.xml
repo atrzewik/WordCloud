@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+
+    <display-name>Word Cloud Application</display-name>
+
+    <servlet>
+        <servlet-name>ServletForFile</servlet-name>
+        <servlet-class>com.trzewik.TomcatWordCloud.ServletForFile</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletForFile</servlet-name>
+        <url-pattern>/contentInfo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletForWord</servlet-name>
+        <servlet-class>com.trzewik.TomcatWordCloud.ServletForWord</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletForWord</servlet-name>
+        <url-pattern>/word</url-pattern>
+    </servlet-mapping>
+
+</web-app>

@@ -1,0 +1,9 @@
+= About TomcatWordCloud
+
+== Prerequisites
+
+== Running
+
+* `mvn clean install`
+
+* `mvn tomcat7:run`
