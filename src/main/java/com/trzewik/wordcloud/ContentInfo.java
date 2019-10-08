@@ -1,26 +1,26 @@
-package com.trzewik.TomcatWordCloud;
+package com.trzewik.wordcloud;
 
 /**
  * @author Agnieszka Trzewik
  */
-public class ContentInfo {
+class ContentInfo {
 
     private boolean isPath;
     private String content;
 
-    public boolean isPath() {
+    boolean isPath() {
         return isPath;
     }
 
-    public void setPath(boolean path) {
+    void setPath(boolean path) {
         isPath = path;
     }
 
-    public String getContent() {
+    String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    void setContent(String content) {
         this.content = content;
     }
 

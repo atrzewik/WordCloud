@@ -1,4 +1,4 @@
-package com.trzewik.TomcatWordCloud;
+package com.trzewik.wordcloud;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

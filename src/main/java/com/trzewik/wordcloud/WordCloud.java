@@ -1,4 +1,4 @@
-package com.trzewik.TomcatWordCloud;
+package com.trzewik.wordcloud;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 /**
  * @author Agnieszka Trzewik
  */
-public class WordCloud implements Observer {
+class WordCloud implements Observer {
 
     private boolean isPath;
 

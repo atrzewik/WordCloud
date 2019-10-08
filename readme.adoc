@@ -1,9 +1,20 @@
-= About TomcatWordCloud
+= About Word Cloud
+
+Application which allows counting an amount of chosen word in file, website or plain text.
 
 == Prerequisites
 
+* JAVA 11 SE
+* MAVEN
+
 == Running
 
-* `mvn clean install`
+. `mvn clean install`
 
-* `mvn tomcat7:run`
+. `mvn tomcat7:run`
+
+. now you can use link:https://github.com/atrzewik/WordCloudFront[WordCloudFront]
+repository or endpoints:
+    .. PUT http://localhost:9091/wordCloud/contentInfo ..
+    .. GET http://localhost:9091/wordCloud/word ..
+

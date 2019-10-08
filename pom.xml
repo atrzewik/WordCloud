@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.trzewik</groupId>
-    <artifactId>TomcatWordCloud</artifactId>
+    <artifactId>wordcloud</artifactId>
     <version>0.1</version>
 
     <packaging>war</packaging>

@@ -10,7 +10,7 @@
 
     <servlet>
         <servlet-name>ServletForFile</servlet-name>
-        <servlet-class>com.trzewik.TomcatWordCloud.ServletForFile</servlet-class>
+        <servlet-class>com.trzewik.wordcloud.ServletForFile</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -20,12 +20,23 @@
 
     <servlet>
         <servlet-name>ServletForWord</servlet-name>
-        <servlet-class>com.trzewik.TomcatWordCloud.ServletForWord</servlet-class>
+        <servlet-class>com.trzewik.wordcloud.ServletForWord</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>ServletForWord</servlet-name>
         <url-pattern>/word</url-pattern>
     </servlet-mapping>
+
+    <filter>
+        <filter-name>cors</filter-name>
+        <filter-class>com.trzewik.wordcloud.CorsFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>cors</filter-name>
+        <url-pattern>/word</url-pattern>
+        <url-pattern>/contentInfo</url-pattern>
+    </filter-mapping>
 
 </web-app>
