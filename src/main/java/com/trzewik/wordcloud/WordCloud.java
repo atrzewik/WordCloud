@@ -1,4 +1,4 @@
-package com.trzewik.TomcatWordCloud;
+package com.trzewik.wordcloud;
 
 import java.io.BufferedReader;
 import java.io.IOException;

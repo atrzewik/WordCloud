@@ -1,4 +1,4 @@
-package com.trzewik.TomcatWordCloud;
+package com.trzewik.wordcloud;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

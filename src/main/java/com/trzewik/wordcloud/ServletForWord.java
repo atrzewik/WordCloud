@@ -1,4 +1,4 @@
-package com.trzewik.TomcatWordCloud;
+package com.trzewik.wordcloud;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.trzewik.TomcatWordCloud.AddObservers.addObservers;
+import static com.trzewik.wordcloud.AddObservers.addObservers;
 
 /**
  * @author Agnieszka Trzewik
@@ -29,6 +29,9 @@ public class ServletForWord extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String clientOrigin = request.getHeader("origin");
+        Logger.getLogger(ServletForFile.class.getName()).log(Level.INFO, "Client origin: " + clientOrigin);
+
         String searchWord = request.getParameter("searchWord");
         PrintWriter writer = response.getWriter();
 
@@ -36,12 +39,12 @@ public class ServletForWord extends HttpServlet {
             observerList.forEach(observer -> quantityOfWord = observer.calculateQuantityOfWord(searchWord));
             response.setContentType("application/json");
             response.setStatus(HttpServletResponse.SC_OK);
-            writer.println("{ \"number of words\": \"" + quantityOfWord + "\"}");
+            writer.println("{\"number of words\": \"" + quantityOfWord + "\"}");
             Logger.getLogger(ServletForFile.class.getName()).log(Level.INFO, "Calculation done. (number of words: " + quantityOfWord + ")");
         }
         else {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            response.setContentType("text");
+            response.setContentType("text/plain");
             writer.println("Wrong parameter was given");
             Logger.getLogger(ServletForFile.class.getName()).log(Level.WARNING, "Wrong parameter was given");
         }

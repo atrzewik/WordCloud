@@ -1,4 +1,4 @@
-package com.trzewik.TomcatWordCloud;
+package com.trzewik.wordcloud;
 
 import java.util.Arrays;
 

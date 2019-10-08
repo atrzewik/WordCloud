@@ -1,18 +1,16 @@
-package com.trzewik.TomcatWordCloud;
+package com.trzewik.wordcloud;
 
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.trzewik.TomcatWordCloud.AddObservers.addObservers;
+import static com.trzewik.wordcloud.AddObservers.addObservers;
 
 /**
  * @author Agnieszka Trzewik
@@ -28,7 +26,9 @@ public class ServletForFile extends HttpServlet {
 
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String clientOrigin = request.getHeader("origin");
+        Logger.getLogger(ServletForFile.class.getName()).log(Level.INFO, "Client origin: " + clientOrigin);
 
         ContentInfo contentInfo = new Gson().fromJson(request.getReader(), ContentInfo.class);
 
@@ -38,25 +38,24 @@ public class ServletForFile extends HttpServlet {
             observerList.forEach(observer -> {
                 try {
                     observer.updateText(contentInfo.isPath(), contentInfo.getContent());
-                    response.setContentType("text");
+                    response.setContentType("text/plain");
                     response.setStatus(HttpServletResponse.SC_OK);
                     writer.println("Proper content info");
                     Logger.getLogger(ServletForFile.class.getName()).log(Level.INFO, contentInfo + " was added.");
 
                 } catch (WrongPathException e) {
-                    response.setContentType("text");
-                    response.setStatus(HttpServletResponse.SC_OK);
+                    response.setContentType("text/plain");
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                     writer.println("Wrong path file was given");
-                    Logger.getLogger(ServletForFile.class.getName()).log(Level.WARNING, contentInfo + " was wrong.", e);
+                    Logger.getLogger(ServletForFile.class.getName()).log(Level.WARNING, contentInfo + " was wrong.");
                 }
             });
         }
         else {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            response.setContentType("text");
+            response.setContentType("text/plain");
             writer.println("Wrong request body was given");
             Logger.getLogger(ServletForFile.class.getName()).log(Level.WARNING, "Wrong request body was given");
         }
     }
-
 }
